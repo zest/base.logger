@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>soul / soul-script Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">soul / soul-script</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="module-logger.html">logger</a>
+						</li>
+						
+						<li>
+							<a href="console.html">logger/appenders/console</a>
+						</li>
+						
+						<li>
+							<a href="no-op.html">logger/appenders/no-op</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+		<div class="span8">
+			
+				<div id="main">
+					
+
+
+	
+	<span class="page-title">Index</span>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>soul-script</h1>
+<blockquote>
+<p>The soul-script module provides support for installation and development of SOUL infrastructure components</p>
+</blockquote>
+<h2>module structure</h2>
+<p>To make sure that new components for soul are compliant with <code>scoul-script</code>, we recommend adding the below scripts in package.json file of the module when needed.</p>
+<ul>
+<li><code>coverage</code><ul>
+<li>This script should generate code coverage reports for the module</li>
+</ul>
+</li>
+<li><code>clean</code><ul>
+<li>This script should clean any build files form the module and restore it to its initial state</li>
+</ul>
+</li>
+<li><code>init</code><ul>
+<li>This script should perform any task required after npm install is run on the module</li>
+</ul>
+</li>
+<li><code>test</code><ul>
+<li>This script should run unit tests on the module</li>
+</ul>
+</li>
+<li><code>document</code><ul>
+<li>This script should generate documentation for the module</li>
+</ul>
+</li>
+<li><p><code>observe</code></p>
+<ul>
+<li><p>This script should run indefinitely and watch for any changes in the source code. The observe script is mainly for active development. </p>
+<blockquote>
+<p>for example, when a script file changes, you might want to run JSLint against the latest changes. </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>The soul-script module itself is also self compliant. Since, soul-script uses grunt internally (like most soul components), the scripts call grunt targets. Script targets for soul-script module is as below:</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;coverage&quot;: &quot;grunt coverage&quot;,
+    &quot;clean&quot;: &quot;grunt clean&quot;,
+    &quot;init&quot;: &quot;grunt init&quot;,
+    &quot;test&quot;: &quot;grunt test&quot;,
+    &quot;document&quot;: &quot;grunt document&quot;,
+    &quot;observe&quot;: &quot;grunt observe&quot;
+}</code></pre>
+<h2>usage</h2>
+<p><strong>soul-script</strong> module is required to develop and install components in soul. It is also handy if you want to trigger builds for multiple modules and observe for changes. This module is designed to be used from command line.</p>
+<blockquote>
+<p>Like all other modules, <code>npm install</code> should be run before using the module.</p>
+</blockquote>
+<p>The structure of this module is like any other module. It has grunt</p>
+<pre><code>node soul-script &lt;&lt;appName&gt;&gt; &lt;&lt;command&gt;&gt;</code></pre>
+<ul>
+<li><code>appname</code> is the name of the application on which the command should run</li>
+<li><code>command</code> can be one of the following:<ul>
+<li><code>coverage</code></li>
+<li><code>clean</code></li>
+<li><code>init</code></li>
+<li><code>test</code></li>
+<li><code>document</code></li>
+<li><code>observe</code></li>
+</ul>
+</li>
+</ul>
+<p>Commands other than <code>init</code> and <code>clean</code> just call the corresponding script on components of the application (if they exist)</p>
+<p><strong><code>init</code></strong> also calls the <code>init</code> script on components of the application, but, before that, it makes sure npm install is called on each module and application dependencies are linked to <code>soul-resolver</code> dependencies.</p>
+<p><strong><code>clean</code></strong> calls clean script on components of the application. After the scripts are done, it deletes the <code>node_modules</code> folder in the components. </p></article>
+    </section>
+
+
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					<hr/>
+					<br />
+					
+					
+		<span class="copyright">
+		<div style='text-align:left;border-color:#626262;background-color:#262626;color:#fff;padding:20px;'>This is free and unencumbered software released into the public domain.<br/>Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.<br/>In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain.<br/>We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors.<br/>We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.<br/><br/>THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br/><br/>For more information, please refer to <a href='http://unlicense.org'>UNLICENSE</a></div>
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
+		on August, 2014 using the <a
+			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<!--<script src="scripts/sunlight.js"></script>-->
+	<script src="scripts/docstrap.lib.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>
+		$( function () {
+			$( "[id*='$']" ).each( function () {
+				var $this = $( this );
+
+				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+			} );
+
+			$( "#toc" ).toc( {
+				anchorName  : function ( i, heading, prefix ) {
+					return $( heading ).attr( "id" ) || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : "100px"
+			} );
+
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+			$( '.dropdown-toggle' ).dropdown();
+//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+				var $this = $( this );
+
+				var example = $this.find( "code" );
+				exampleText = example.html();
+				var lang = /{@lang (.*?)}/.exec( exampleText );
+				if ( lang && lang[1] ) {
+					exampleText = exampleText.replace( lang[0], "" );
+					example.html( exampleText );
+					lang = lang[1];
+				} else {
+					lang = "javascript";
+				}
+
+				if ( lang ) {
+
+					$this
+						.addClass( "sunlight-highlight-" + lang )
+						.addClass( "linenums" )
+						.html( example.html() );
+
+				}
+			} );
+
+			Sunlight.highlightAll( {
+				lineNumbers : false,
+				showMenu : true,
+				enableDoclinks : true
+			} );
+		} );
+	 </script>
+
+
+
+	<!--Navigation and Symbol Display-->
+	
+
+
+	<!--Google Analytics-->
+	
+
+</body>
+</html>
