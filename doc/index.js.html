@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>soul / soul-script Source: index.js</title>
+	<title>soul-infra / base.script Source: index.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -18,7 +18,7 @@
 <div class="container-fluid">
 	<div class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand" href="index.html">soul / soul-script</a>
+			<a class="brand" href="index.html">soul-infra / base.script</a>
 			<ul class="nav">
 				
 				<li class="dropdown">
@@ -28,15 +28,15 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="module-logger.html">logger</a>
+							<a href="module-base-logger.html">base-logger</a>
 						</li>
 						
 						<li>
-							<a href="console.html">logger/appenders/console</a>
+							<a href="console.html">base-logger/appenders/console</a>
 						</li>
 						
 						<li>
-							<a href="no-op.html">logger/appenders/no-op</a>
+							<a href="no-op.html">base-logger/appenders/no-op</a>
 						</li>
 						
 
@@ -65,9 +65,9 @@
 /**
  * @fileOverview logger is a basic logger module used throughout the run scripts to log onto the node console or files.
  * It takes a module name as reference and returns a logger object with log, info, warn and error methods.
- * @module logger
- * @requires logger/appenders/console
- * @requires logger/appenders/no-op
+ * @module base-logger
+ * @requires base-logger/appenders/console
+ * @requires base-logger/appenders/no-op
  * @requires util
  */
 // which logs to consider if log level is one of the keys
@@ -102,7 +102,7 @@ var logLevels = {
 /**
  * This function returns a logger for the module specified by the moduleName parameter.
  * @param {String} moduleName - the name of the module for which the logger should be returned
- * @returns {module:logger~Logger} a Logger object with logging functions. 
+ * @returns {module:base-logger~Logger} a Logger object with logging functions.
  */
 module.exports = function (moduleName) {
     // if the module name is undefined, we set it blank
@@ -126,8 +126,8 @@ module.exports = function (moduleName) {
 /**
  * Configures the logger.
  * @function
- * @name module:logger.configure
- * @param {Array.&lt;module:logger~LoggerSettings>} settings - the settings used for logger
+ * @name module:base-logger.configure
+ * @param {Array.&lt;module:base-logger~LoggerSettings>} settings - the settings used for logger
  */
 module.exports.configure = function (settings) {
     // we put this in process so that different versions of the logger can still use a common configuration 
@@ -141,27 +141,27 @@ module.exports.configure = function (settings) {
 // documenting the Logger object returned by the logger module
 /**
  * The logger object used to log messages
- * @typedef {object} module:logger~Logger
- * @property {module:logger~LoggingFunction} log - least priority logging function
- * @property {module:logger~LoggingFunction} info - third highest priority logging function
- * @property {module:logger~LoggingFunction} warn - second highest priority logging function
- * @property {module:logger~LoggingFunction} error - highest priority logging function
+ * @typedef {object} module:base-logger~Logger
+ * @property {module:base-logger~LoggingFunction} log - least priority logging function
+ * @property {module:base-logger~LoggingFunction} info - third highest priority logging function
+ * @property {module:base-logger~LoggingFunction} warn - second highest priority logging function
+ * @property {module:base-logger~LoggingFunction} error - highest priority logging function
  */
 // documenting the logging functions
 /**
  * A logging function is used to log values to the console or elsewhere as configured. It can be called with anything
  * as parameter.
- * @callback module:logger~LoggingFunction
+ * @callback module:base-logger~LoggingFunction
  * @param {...Object|String} arguments - the objects to log.
  */
 // documenting the Logger settings object
 /**
  * The logger object used to configure loggers
- * @typedef {object} module:logger~LoggerSettings
+ * @typedef {object} module:base-logger~LoggerSettings
  * @property {regex} [pattern=\.*\] - pattern is used to filter modules to log. Only moduleNames matching the pattern 
  * will be parsed through this setting
- * @property {string} [level='log'] - the log level filters the actual {@link module:logger~LoggingFunction} in the 
- * {@link module:logger~Logger} object that are considered for logging. Those with priority lower than the passed 
+ * @property {string} [level='log'] - the log level filters the actual {@link module:base-logger~LoggingFunction} in the
+ * {@link module:base-logger~Logger} object that are considered for logging. Those with priority lower than the passed
  * level will be ignored. 
  * @property {string} [appender='console'] - appender defines the logging location.
  */

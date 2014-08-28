@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>soul / soul-script Index</title>
+	<title>soul-infra / base.script Index</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -18,7 +18,7 @@
 <div class="container-fluid">
 	<div class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand" href="index.html">soul / soul-script</a>
+			<a class="brand" href="index.html">soul-infra / base.script</a>
 			<ul class="nav">
 				
 				<li class="dropdown">
@@ -28,15 +28,15 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
-							<a href="module-logger.html">logger</a>
+							<a href="module-base-logger.html">base-logger</a>
 						</li>
 						
 						<li>
-							<a href="console.html">logger/appenders/console</a>
+							<a href="console.html">base-logger/appenders/console</a>
 						</li>
 						
 						<li>
-							<a href="no-op.html">logger/appenders/no-op</a>
+							<a href="no-op.html">base-logger/appenders/no-op</a>
 						</li>
 						
 
@@ -80,74 +80,11 @@
 
 
     <section class="readme-section">
-        <article><h1>soul-script</h1>
+        <article><h1>soul-infra / base.logger</h1>
 <blockquote>
-<p>The soul-script module provides support for installation and development of SOUL infrastructure components</p>
-</blockquote>
-<h2>module structure</h2>
-<p>To make sure that new components for soul are compliant with <code>scoul-script</code>, we recommend adding the below scripts in package.json file of the module when needed.</p>
-<ul>
-<li><code>coverage</code><ul>
-<li>This script should generate code coverage reports for the module</li>
-</ul>
-</li>
-<li><code>clean</code><ul>
-<li>This script should clean any build files form the module and restore it to its initial state</li>
-</ul>
-</li>
-<li><code>init</code><ul>
-<li>This script should perform any task required after npm install is run on the module</li>
-</ul>
-</li>
-<li><code>test</code><ul>
-<li>This script should run unit tests on the module</li>
-</ul>
-</li>
-<li><code>document</code><ul>
-<li>This script should generate documentation for the module</li>
-</ul>
-</li>
-<li><p><code>observe</code></p>
-<ul>
-<li><p>This script should run indefinitely and watch for any changes in the source code. The observe script is mainly for active development. </p>
-<blockquote>
-<p>for example, when a script file changes, you might want to run JSLint against the latest changes. </p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<p>The soul-script module itself is also self compliant. Since, soul-script uses grunt internally (like most soul components), the scripts call grunt targets. Script targets for soul-script module is as below:</p>
-<pre><code>&quot;scripts&quot;: {
-    &quot;coverage&quot;: &quot;grunt coverage&quot;,
-    &quot;clean&quot;: &quot;grunt clean&quot;,
-    &quot;init&quot;: &quot;grunt init&quot;,
-    &quot;test&quot;: &quot;grunt test&quot;,
-    &quot;document&quot;: &quot;grunt document&quot;,
-    &quot;observe&quot;: &quot;grunt observe&quot;
-}</code></pre>
-<h2>usage</h2>
-<p><strong>soul-script</strong> module is required to develop and install components in soul. It is also handy if you want to trigger builds for multiple modules and observe for changes. This module is designed to be used from command line.</p>
-<blockquote>
-<p>Like all other modules, <code>npm install</code> should be run before using the module.</p>
-</blockquote>
-<p>The structure of this module is like any other module. It has grunt</p>
-<pre><code>node soul-script &lt;&lt;appName&gt;&gt; &lt;&lt;command&gt;&gt;</code></pre>
-<ul>
-<li><code>appname</code> is the name of the application on which the command should run</li>
-<li><code>command</code> can be one of the following:<ul>
-<li><code>coverage</code></li>
-<li><code>clean</code></li>
-<li><code>init</code></li>
-<li><code>test</code></li>
-<li><code>document</code></li>
-<li><code>observe</code></li>
-</ul>
-</li>
-</ul>
-<p>Commands other than <code>init</code> and <code>clean</code> just call the corresponding script on components of the application (if they exist)</p>
-<p><strong><code>init</code></strong> also calls the <code>init</code> script on components of the application, but, before that, it makes sure npm install is called on each module and application dependencies are linked to <code>soul-resolver</code> dependencies.</p>
-<p><strong><code>clean</code></strong> calls clean script on components of the application. After the scripts are done, it deletes the <code>node_modules</code> folder in the components. </p></article>
+<p>base.logger is a basic logger module used throughout soul-infra to log onto the node console or files. It takes a
+module name as reference and returns a logger object with <code>log</code>, <code>info</code>, <code>warn</code> and <code>error</code> methods.</p>
+</blockquote></article>
     </section>
 
 

@@ -1,6 +1,6 @@
 {
     "name": "base.logger",
-    "description": "basic logger module used throughout soul-infra",
+    "description": "base.logger is a basic logger module used throughout soul-infra to log onto the node console or files",
     "version": "0.0.1",
     "main": "./lib/index",
     "private": true,
@@ -40,7 +40,6 @@
         "grunt-jslint": "*",
         "ink-docstrap": "*",
         "grunt-jsdoc": "*",
-        "grunt-docco": "*",
         "grunt-jasmine-node": "*",
         "grunt-istanbul": "*",
         "grunt-env": "*",
