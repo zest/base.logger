@@ -78,10 +78,6 @@ var logLevels = {
         error: ['error'],
         none: []
     },
-    // no operation function
-    noOp = function () {
-        return;
-    },
     // adds a new logger
     wrapLogger = function (previousLogger, logLevel, appenderName, moduleName) {
         // check if the appender exists
@@ -94,8 +90,8 @@ var logLevels = {
                     preLogger.apply(preLogger, arguments);
                 };
             });
-        } catch (e) {
-            console.error(e);
+        } catch (ignore) {
+            // ignore silently
         }
         return previousLogger;
     };
@@ -130,6 +126,10 @@ module.exports = function (moduleName) {
  * @param {Array.&lt;module:base-logger~LoggerSettings>} settings - the settings used for logger
  */
 module.exports.configure = function (settings) {
+    if(!settings) {
+        process.SOUL_BASE_LOGGER = undefined;
+        return;
+    }
     // we put this in process so that different versions of the logger can still use a common configuration 
     settings.forEach(function (setting) {
         if (typeof setting.pattern === 'string') {
