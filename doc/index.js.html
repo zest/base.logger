@@ -114,7 +114,7 @@ module.exports = function (moduleName) {
     process.SOUL_BASE_LOGGER.forEach(function (setting) {
         // if config has a pattern, test the module name against it.
         if (!setting.pattern || setting.pattern.test(moduleName)) {
-            logger = wrapLogger(logger, (setting.level || 'log'), (setting.appender || 'console'), moduleName);
+            logger = wrapLogger(logger, setting.level, setting.appender, moduleName);
         }
     });
     return logger;
@@ -134,6 +134,12 @@ module.exports.configure = function (settings) {
     settings.forEach(function (setting) {
         if (typeof setting.pattern === 'string') {
             setting.pattern = new RegExp(setting.pattern);
+        }
+        if(!logLevels[setting.level]) {
+            setting.level = 'log';
+        }
+        if(!setting.appender) {
+            setting.appender = 'console';
         }
     });
     process.SOUL_BASE_LOGGER = settings;
