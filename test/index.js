@@ -196,4 +196,21 @@ describe('base.logger', function () {
         expect(spyLogger).to.have.callCount(0);
         console.log = origLogger;
     });
+    // should not configure with invalid appenders
+    it('should fail silently invalid levels', function () {
+        var origLogger = console.log,
+            spyLogger = sinon.spy();
+        // first test
+        console.log = spyLogger;
+        logProvider.configure([{
+            level: 'invalid log level'
+        }]);
+        var logger = logProvider();
+        logger.log(1);
+        logger.info(1);
+        logger.error(1);
+        logger.warn(1);
+        expect(spyLogger).to.have.callCount(4);
+        console.log = origLogger;
+    });
 });
