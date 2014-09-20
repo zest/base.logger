@@ -24,7 +24,7 @@ describe('base.logger', function () {
         expect(spyLogger).to.have.callCount(0);
     });
     // it should respect patterns
-    it('should respect patterns', function () {
+    it('should respect patterns (test 1)', function () {
         var origLogger = console.log,
             spyLogger = sinon.spy();
         // first test
@@ -38,28 +38,36 @@ describe('base.logger', function () {
         logger.info(1);
         logger.error(1);
         logger.warn(1);
+        console.log = origLogger;
         expect(spyLogger).to.have.callCount(4);
+    });
+    it('should respect patterns (test 2)', function () {
+        var origLogger = console.log,
+            spyLogger = sinon.spy();
         // second test
-        spyLogger = sinon.spy();
         console.log = spyLogger;
         logProvider.configure([{
             pattern: 'invalid',
             level: 'log'
         }]);
-        logger = logProvider('hello');
+        var logger = logProvider('hello');
         logger.log(1);
         logger.info(1);
         logger.error(1);
         logger.warn(1);
+        console.log = origLogger;
         expect(spyLogger).to.have.callCount(0);
+    });
+    it('should respect patterns (test 3)', function () {
+        var origLogger = console.log,
+            spyLogger = sinon.spy();
         // third test
-        spyLogger = sinon.spy();
         console.log = spyLogger;
         logProvider.configure([{
             pattern: /^[a-z]*$/,
             level: 'log'
         }]);
-        logger = logProvider('hello');
+        var logger = logProvider('hello');
         logger.log(1);
         logger.info(1);
         logger.error(1);
@@ -69,11 +77,11 @@ describe('base.logger', function () {
         logger.info(1);
         logger.error(1);
         logger.warn(1);
-        expect(spyLogger).to.have.callCount(4);
         console.log = origLogger;
+        expect(spyLogger).to.have.callCount(4);
     });
     // it should respect log levels
-    it('should respect log levels', function () {
+    it('should respect log levels (test 1)', function () {
         var origLogger = console.log,
             spyLogger = sinon.spy();
         // first test
@@ -87,20 +95,29 @@ describe('base.logger', function () {
         logger.info(1);
         logger.error(1);
         logger.warn(1);
+        console.log = origLogger;
         expect(spyLogger).to.have.callCount(1);
+    });
+    it('should respect log levels (test 2)', function () {
+        var origLogger = console.log,
+            spyLogger = sinon.spy();
         // second test
-        spyLogger = sinon.spy();
         console.log = spyLogger;
         logProvider.configure([{
             pattern: '.*',
             level: 'none'
         }]);
-        logger = logProvider('hello');
+        var logger = logProvider('hello');
         logger.log(1);
         logger.info(1);
         logger.error(1);
         logger.warn(1);
+        console.log = origLogger;
         expect(spyLogger).to.have.callCount(0);
+    });
+    it('should respect log levels (test 2)', function () {
+        var origLogger = console.log,
+            spyLogger = sinon.spy();
         // third test
         spyLogger = sinon.spy();
         console.log = spyLogger;
@@ -108,7 +125,7 @@ describe('base.logger', function () {
             pattern: '.*',
             level: 'info'
         }]);
-        logger = logProvider('hello');
+        var logger = logProvider('hello');
         logger.log(1);
         logger.info(1);
         logger.error(1);
@@ -118,8 +135,8 @@ describe('base.logger', function () {
         logger.info(1);
         logger.error(1);
         logger.warn(1);
-        expect(spyLogger).to.have.callCount(6);
         console.log = origLogger;
+        expect(spyLogger).to.have.callCount(6);
     });
     // it should be able to log objects
     it('should be able to log objects', function () {
