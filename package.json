@@ -1,6 +1,6 @@
 {
     "name": "base.logger",
-    "description": "base.logger is a basic logger module used throughout soul-infra for logging",
+    "description": "base.logger is a basic logger module used throughout zest for logging",
     "version": "0.0.1",
     "main": "./lib/index",
     "private": true,
