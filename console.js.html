@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ZEST / base.logger / Source: appenders/console.js</title>
+    <title>ZEST / base.logger / Source: console.js</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ZEST / base.logger / Source: appenders/console.js</h1>
+    <h1 class="page-title">ZEST / base.logger / Source: console.js</h1>
     
     
 
@@ -99,7 +99,7 @@ module.exports = function (moduleName) {
     // pad the module name with spaces to left
     var prefix = format(('                              ' + moduleName).slice(-32), ['italic', 'grey']) + ' | ';
     return {
-        log: function () {
+        debug: function () {
             console.log(spitString(arguments, ['blue'], prefix));
         },
         info: function () {
@@ -126,7 +126,7 @@ module.exports = function (moduleName) {
 </div>
 
 <nav>
-    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="module-base-logger.html">base-logger</a></li><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="no-op.html">base-logger/appenders/no-op</a></li></ul>
+    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="no-op.html">base-logger/appenders/no-op</a></li></ul>
 </nav>
 <script> prettyPrint(); </script>
 <script src="scripts/linenumber.js"> </script>
