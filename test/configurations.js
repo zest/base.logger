@@ -84,6 +84,21 @@ describe(
                         expect(spyLogger).to.have.callCount(6);
                     }
                 );
+                // it should be able to configure properly with string
+                it(
+                    'should be able to configure properly with string',
+                    function () {
+                        var logger = logProvider('alpha');
+                        var origLogger = console.log;
+                        var spyLogger = sinon.spy();
+                        console.log = spyLogger;
+                        logger.debug(1).info(1).warn(1).error(1);
+                        logger = logger.group('beta');
+                        logger.debug(1).info(1).warn(1).error(1);
+                        console.log = origLogger;
+                        expect(spyLogger).to.have.callCount(8);
+                    }
+                );
                 // should be able to stop and start itself
                 it(
                     'should be able to stop and start itself',
