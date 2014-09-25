@@ -84,6 +84,34 @@ describe(
                         expect(spyLogger).to.have.callCount(6);
                     }
                 );
+                // should be able to stop and start itself
+                it(
+                    'should be able to stop and start itself',
+                    function () {
+                        var logger = logProvider(
+                            {
+                                settings: [
+                                    {
+                                        match: 'alpha',
+                                        appender: 'console',
+                                        level: 'info'
+                                    }
+                                ],
+                                group: 'alpha'
+                            }
+                        );
+                        var origLogger = console.log;
+                        var spyLogger = sinon.spy();
+                        console.log = spyLogger;
+                        logger.stop();
+                        logger.debug(1).info(1).warn(1).error(1);
+                        logger = logger.group('beta');
+                        logger.start();
+                        logger.debug(1).info(1).warn(1).error(1);
+                        console.log = origLogger;
+                        expect(spyLogger).to.have.callCount(3);
+                    }
+                );
             }
         );
     }
