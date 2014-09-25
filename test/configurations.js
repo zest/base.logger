@@ -44,8 +44,7 @@ describe(
                                 {
                                     match: 'alpha',
                                     appender: 'console',
-                                    level: 'info',
-                                    pattern: '%d %m'
+                                    level: 'info'
                                 }
                             ]
                         );
@@ -69,8 +68,7 @@ describe(
                                     {
                                         match: 'alpha',
                                         appender: 'console',
-                                        level: 'info',
-                                        pattern: '%d %m'
+                                        level: 'info'
                                     }
                                 ],
                                 group: 'alpha'
@@ -86,8 +84,6 @@ describe(
                         expect(spyLogger).to.have.callCount(6);
                     }
                 );
-                // it should ignore subsequent configurations
-                it('should ignore subsequent configurations? should it really?!!');
             }
         );
     }
