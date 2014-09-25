@@ -118,10 +118,10 @@ describe(
                         var origLogger = console.log;
                         var spyLogger = sinon.spy();
                         console.log = spyLogger;
-                        logger.stop();
+                        logProvider.stop();
                         logger.debug(1).info(1).warn(1).error(1);
                         logger = logger.group('beta');
-                        logger.start();
+                        logProvider.start();
                         logger.debug(1).info(1).warn(1).error(1);
                         console.log = origLogger;
                         expect(spyLogger).to.have.callCount(3);
