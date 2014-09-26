@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ZEST / base.logger / Module: base-logger/appenders/console</title>
+    <title>ZEST / base.logger / Module: base-logger/formatter</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ZEST / base.logger / Module: base-logger/appenders/console</h1>
+    <h1 class="page-title">ZEST / base.logger / Module: base-logger/formatter</h1>
     
     
 
@@ -27,7 +27,7 @@
     
 <header>
     <h2>
-    base-logger/appenders/console
+    base-logger/formatter
     </h2>
     
 </header>  
@@ -37,7 +37,7 @@
     
         
 <dt>
-    <h4 class="name" id="module:base-logger/appenders/console"><span class="type-signature"></span>require("base-logger/appenders/console")<span class="signature">(group)</span><span class="type-signature"> &rarr; {<a href="module-base-logger-LoggerBase.html">module:base-logger~LoggerBase</a>}</span></h4>
+    <h4 class="name" id="module:base-logger/formatter"><span class="type-signature"></span>require("base-logger/formatter")<span class="signature">(group)</span><span class="type-signature"> &rarr; {<a href="formatter.html#Formatter">module:base-logger/formatter~Formatter</a>}</span></h4>
     
     
 </dt>
@@ -45,7 +45,7 @@
     
     
     <div class="description">
-        <p>This function returns a logger which logs a decorated message at the console.</p>
+        <p>This function returns a formatter function which is used to format logs</p>
     </div>
     
 
@@ -85,7 +85,7 @@
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
             
@@ -95,7 +95,7 @@
             
             
             
-            <td class="description last"><p>the name of the group for which the logger should be returned</p></td>
+            <td class="description last"><p>the log group</p></td>
         </tr>
 	
 	
@@ -192,7 +192,7 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="console.js.html">appenders/console.js</a>, <a href="console.js.html#line15">line 15</a>
+        <a href="formatter.js.html">formatter.js</a>, <a href="formatter.js.html#line19">line 19</a>
     </li></ul></dd>
     
     
@@ -217,7 +217,7 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
     
             
 <div class="param-desc">
-    <p>an object with <code>debug</code>, <code>info</code>, <code>warn</code> and <code>error</code> functions.</p>
+    <p>the formatter function</p>
 </div>
 
 
@@ -228,7 +228,7 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
 	</dt>
 	<dd>
 		
-<span class="param-type"><a href="module-base-logger-LoggerBase.html">module:base-logger~LoggerBase</a></span>
+<span class="param-type"><a href="formatter.html#Formatter">module:base-logger/formatter~Formatter</a></span>
 
 
 	</dd>
@@ -243,7 +243,7 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
     
     
         
-            <div class="description"><p>console appender is used by the logger to log messages in console</p></div>
+            <div class="description"><p>format module is used to format log messages with a pattern.</p></div>
         
         
         
@@ -269,7 +269,7 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="console.js.html">appenders/console.js</a>, <a href="console.js.html#line2">line 2</a>
+        <a href="formatter.js.html">formatter.js</a>, <a href="formatter.js.html#line2">line 2</a>
     </li></ul></dd>
     
     
@@ -293,6 +293,8 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
         <h3 class="subsection-title">Requires</h3>
         
         <ul>
+            <li><a href="external-moment.html">external:moment</a></li>
+        
             <li><a href="external-util.html">external:util</a></li>
         </ul>
     
@@ -305,6 +307,195 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
     
     
     
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+        
+        <dl>
+                
+<dt>
+    <h4 class="name" id="Formatter"><span class="type-signature"></span>Formatter<span class="signature">(time, logLevel, args)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The formatter function is used to format objects into a loggable string</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>the logging time</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>logLevel</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>the level of the logger message</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;*></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>the objects or Strings to log</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="formatter.js.html">formatter.js</a>, <a href="formatter.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>the parsed and formatted logggable string</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+            </dl>
     
     
     

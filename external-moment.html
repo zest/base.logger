@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ZEST / base.logger / Source: appenders/console.js</title>
+    <title>ZEST / base.logger / External: moment</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,50 +17,96 @@
 
 <div id="main">
     
-    <h1 class="page-title">ZEST / base.logger / Source: appenders/console.js</h1>
+    <h1 class="page-title">ZEST / base.logger / External: moment</h1>
     
     
 
 
-    
-    <section>
-        <article>
-            <pre class="prettyprint source"><code>'use strict';
-/**
- * @fileOverview console appender is used by the logger to log messages in console
- * @module base-logger/appenders/console
- * @requires {@link external:util}
- */
-/**
- * This function returns a logger which logs a decorated message at the console.
- * @param {String} group - the name of the group for which the logger should be returned
- * @property {string|module:base-logger~LogPattern} [pattern] the pattern used for formatting the logs. If the value is
- * a `string`, the same pattern will be used for logging `debug`, `info`, `warn` and `error` messages. See
- * {@link module:base-logger~LogPattern} for details on how patterns are used.
- * @returns {module:base-logger~LoggerBase} an object with `debug`, `info`, `warn` and `error` functions.
- */
-module.exports = function (group, pattern) {
-    var format = require('../formatter')(group, pattern, function () {
 
-    });
-    return {
-        debug: function () {
-            console.log(format(new Date(), 'debug', arguments));
-        },
-        info: function () {
-            console.log(format(new Date(), 'info', arguments));
-        },
-        warn: function () {
-            console.log(format(new Date(), 'warn', arguments));
-        },
-        error: function () {
-            console.log(format(new Date(), 'error', arguments));
-        }
-    };
-};
-</code></pre>
-        </article>
-    </section>
+<section>
+    
+<header>
+    <h2>
+    moment
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+            <div class="description"><p>Parse, validate, manipulate, and display dates in javascript.</p></div>
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="typedefs.js.html">typedefs.js</a>, <a href="typedefs.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="http://momentjs.com/">http://momentjs.com/</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</article>
+
+</section>  
 
 
 
