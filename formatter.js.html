@@ -34,7 +34,6 @@
  */
 var util = require('util');
 var moment = require('moment');
-
 /**
  * This function returns a formatter function which is used to format logs
  * @param {string} group the log group
@@ -47,15 +46,6 @@ module.exports = function (group, pattern) {
     // normalize the passes pattern into a map
     var patternMap = {
     };
-    if(typeof pattern === 'string') {
-        patternMap.debug = patternMap.info = patternMap.warn = patternMap.error = pattern;
-    } else {
-        Object.keys(pattern).forEach(function (keys) {
-            keys.split(',').forEach(function (key) {
-                patternMap[key] = pattern[keys];
-            });
-        });
-    }
     // we populate placeholders in the pattern using the object keys
     var format = function (object) {
         return patternMap[object.l].replace(
@@ -64,34 +54,47 @@ module.exports = function (group, pattern) {
                 return parse(
                     object[arguments[5]],
                     (arguments[1] === '-'),
-                    (parseInt(arguments[2]) || 0),
-                    (parseInt(arguments[4]) || 999),
-                    arguments[6] && arguments[6].replace(/[\[\]]/g, '')
-                ); 
+                    (parseInt(arguments[2], 10) || 0),
+                    (parseInt(arguments[4], 10) || 999),
+                    (arguments[6] && arguments[6].replace(/[\[\]]/g, ''))
+                );
             }
         );
     };
     // here we add padding and alignment to any value
     var parse = function (value, rpad, min, max, format) {
-        if(value instanceof Date && format) {
+        if (value instanceof Date && format) {
             value = moment(value).format(format);
         }
-        while(value.length &lt; min) {
-            if(rpad) {
+        while (value.length &lt; min) {
+            if (rpad) {
                 value = value + ' ';
             } else {
                 value = ' ' + value;
             }
         }
-        if(value.length > max) {
-            if(rpad) {
-                value = value.substr(0,max);
+        if (value.length > max) {
+            if (rpad) {
+                value = value.substr(0, max);
             } else {
                 value = value.substr(-max);
             }
         }
         return value;
     };
+    if (typeof pattern === 'string') {
+        patternMap.debug = patternMap.info = patternMap.warn = patternMap.error = pattern;
+    } else {
+        Object.keys(pattern).forEach(
+            function (keys) {
+                keys.split(',').forEach(
+                    function (key) {
+                        patternMap[key] = pattern[keys];
+                    }
+                );
+            }
+        );
+    }
     /**
      * The formatter function is used to format objects into a loggable string
      * @param {Date} time - the logging time
@@ -106,12 +109,14 @@ module.exports = function (group, pattern) {
                 g: group,
                 l: logLevel,
                 t: new Date(),
-                m: Array.prototype.slice.call(args).map(function(val){
-                    if(typeof val === 'object') {
-                        return util.inspect(val);
+                m: Array.prototype.slice.call(args).map(
+                    function (val) {
+                        if (typeof val === 'object') {
+                            return util.inspect(val);
+                        }
+                        return val;
                     }
-                    return val;
-                }).join(' ')
+                ).join(' ')
             }
         );
     };
