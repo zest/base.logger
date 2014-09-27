@@ -13,9 +13,13 @@ describe(
                 it(
                     'should be able to format log messages properly (test 1)',
                     function () {
-                        var logger = logProvider([{
-                            pattern: '%10.10g | [%-1.1l] %m'
-                        }]);
+                        var logger = logProvider(
+                            [
+                                {
+                                    pattern: '%10.10g | [%-1.1l] %m'
+                                }
+                            ]
+                        );
                         var origLogger = console.log;
                         var spyLogger = sinon.spy();
                         console.log = spyLogger;
@@ -39,9 +43,13 @@ describe(
                 it(
                     'should be able to format log messages properly (test 2)',
                     function () {
-                        var logger = logProvider([{
-                            pattern: '%-10.10g | [%4l] %m'
-                        }]);
+                        var logger = logProvider(
+                            [
+                                {
+                                    pattern: '%-10.10g | [%4l] %m'
+                                }
+                            ]
+                        );
                         var origLogger = console.log;
                         var spyLogger = sinon.spy();
                         console.log = spyLogger;

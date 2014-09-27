@@ -19,13 +19,17 @@ describe(
                 it(
                     'should be able to log objects',
                     function () {
-                        var logger = logProvider([{
-                            pattern: '%m'
-                        }]);
+                        var logger = logProvider(
+                            [
+                                {
+                                    pattern: '%m'
+                                }
+                            ]
+                        );
                         var origLogger = console.log;
                         var spyLogger = sinon.spy();
                         console.log = spyLogger;
-                        logger.debug('value', {a:1,b:2});
+                        logger.debug('value', {a: 1, b: 2});
                         console.log = origLogger;
                         expect(spyLogger).to.have.callCount(1);
                         expect(spyLogger.getCall(0)).to.have.been.calledWithExactly('value { a: 1, b: 2 }');
