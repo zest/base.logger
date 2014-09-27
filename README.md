@@ -83,6 +83,20 @@ logger.debug('hello zest!');
  
  -  **`appender`** tells the logger where to log. Possible values are `console` and `file`
  
+ -  **`appenderOptions`** is a map of options passed to the appender. For `console` appenders, this is not required. For
+    `file` appender, the appender options contain two properties.
+    
+     -  `path` which is the path to the file where the logs should be saved. The `path` should be without extension.
+     -  `roll` option if used, defines when new log files should be created and how it should be rolled. `roll` can be
+        any momentjs date format. the file name of log files will be appended with the time formated in the 
+        specified format and whenever the parsed value changes, a new log file will be created.
+        
+        > For example,
+        > 
+        > a value of `YYYYM` will create one file for each month.
+        > 
+        > For Jan 2015, the filename will be `<<value of path>>-20151.log`.
+ 
  -  **`level`** is the log level upto which logging should happen. Possible values are `debug`, `info`, `warn`, `error`
     and `none`.
     
