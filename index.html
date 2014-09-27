@@ -104,6 +104,21 @@ logger.debug('hello zest!');</code></pre>
 </li>
 <li><p><strong><code>appender</code></strong> tells the logger where to log. Possible values are <code>console</code> and <code>file</code></p>
 </li>
+<li><p><strong><code>appenderOptions</code></strong> is a map of options passed to the appender. For <code>console</code> appenders, this is not required. For
+<code>file</code> appender, the appender options contain two properties.</p>
+<ul>
+<li><code>path</code> which is the path to the file where the logs should be saved. The <code>path</code> should be without extension.</li>
+<li><p><code>roll</code> option if used, defines when new log files should be created and how it should be rolled. <code>roll</code> can be
+any momentjs date format. the file name of log files will be appended with the time formated in the 
+specified format and whenever the parsed value changes, a new log file will be created.</p>
+<blockquote>
+<p>For example,</p>
+<p>a value of <code>YYYYM</code> will create one file for each month.</p>
+<p>For Jan 2015, the filename will be <code>&lt;&lt;value of path&gt;&gt;-20151.log</code>.</p>
+</blockquote>
+</li>
+</ul>
+</li>
 <li><p><strong><code>level</code></strong> is the log level upto which logging should happen. Possible values are <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>
 and <code>none</code>.</p>
 </li>
@@ -166,7 +181,7 @@ conversion specifier.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="module-base-logger.html">base-logger</a></li><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="formatter.html">base-logger/formatter</a></li></ul><h3>Externals</h3><ul><li><a href="external-merge.html">merge</a></li><li><a href="external-moment.html">moment</a></li><li><a href="external-util.html">util</a></li></ul><h3>Classes</h3><ul><li><a href="module-base-logger-Logger.html">Logger</a></li><li><a href="module-base-logger-LoggerBase.html">LoggerBase</a></li></ul>
+    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="module-base-logger.html">base-logger</a></li><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="file.html">base-logger/appenders/file</a></li><li><a href="formatter.html">base-logger/formatter</a></li></ul><h3>Externals</h3><ul><li><a href="external-fs-extra.html">fs-extra</a></li><li><a href="external-merge.html">merge</a></li><li><a href="external-moment.html">moment</a></li><li><a href="external-util.html">util</a></li></ul><h3>Classes</h3><ul><li><a href="module-base-logger-Logger.html">Logger</a></li><li><a href="module-base-logger-LoggerBase.html">LoggerBase</a></li></ul>
 </nav>
 <script> prettyPrint(); </script>
 <script src="scripts/linenumber.js"> </script>

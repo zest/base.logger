@@ -37,7 +37,7 @@
     
         
 <dt>
-    <h4 class="name" id="module:base-logger/appenders/console"><span class="type-signature"></span>require("base-logger/appenders/console")<span class="signature">(group)</span><span class="type-signature"> &rarr; {<a href="module-base-logger-LoggerBase.html">module:base-logger~LoggerBase</a>}</span></h4>
+    <h4 class="name" id="module:base-logger/appenders/console"><span class="type-signature"></span>require("base-logger/appenders/console")<span class="signature">(group, <span class="optional">pattern</span>)</span><span class="type-signature"> &rarr; {<a href="module-base-logger-LoggerBase.html">module:base-logger~LoggerBase</a>}</span></h4>
     
     
 </dt>
@@ -67,6 +67,8 @@
 		<th>Type</th>
 		
 		
+		<th>Argument</th>
+		
 		
 		
 		
@@ -92,45 +94,20 @@
             </td>
             
             
+                <td class="attributes">
+                
+                    
+                
+                    
+                
+                </td>
+            
             
             
             
             <td class="description last"><p>the name of the group for which the logger should be returned</p></td>
         </tr>
 	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
-
-<table class="props">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
 	
 	
         <tr>
@@ -157,6 +134,8 @@
                 
                     
                 
+                    
+                
                 </td>
             
             
@@ -169,8 +148,11 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
 	
 	
 	</tbody>
-</table></dl>
-        
+</table>
+    
+    
+    
+<dl class="details">
     
         
     
@@ -321,7 +303,7 @@ a <code>string</code>, the same pattern will be used for logging <code>debug</co
 </div>
 
 <nav>
-    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="module-base-logger.html">base-logger</a></li><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="formatter.html">base-logger/formatter</a></li></ul><h3>Externals</h3><ul><li><a href="external-merge.html">merge</a></li><li><a href="external-moment.html">moment</a></li><li><a href="external-util.html">util</a></li></ul><h3>Classes</h3><ul><li><a href="module-base-logger-Logger.html">Logger</a></li><li><a href="module-base-logger-LoggerBase.html">LoggerBase</a></li></ul>
+    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="module-base-logger.html">base-logger</a></li><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="file.html">base-logger/appenders/file</a></li><li><a href="formatter.html">base-logger/formatter</a></li></ul><h3>Externals</h3><ul><li><a href="external-fs-extra.html">fs-extra</a></li><li><a href="external-merge.html">merge</a></li><li><a href="external-moment.html">moment</a></li><li><a href="external-util.html">util</a></li></ul><h3>Classes</h3><ul><li><a href="module-base-logger-Logger.html">Logger</a></li><li><a href="module-base-logger-LoggerBase.html">LoggerBase</a></li></ul>
 </nav>
 <script> prettyPrint(); </script>
 <script src="scripts/linenumber.js"> </script>

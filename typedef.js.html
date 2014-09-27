@@ -44,6 +44,21 @@
  * @property {Array.&lt;module:base-logger~LoggerConfigurations>} [settings] - the logger configurations
  */
 /**
+ * @typedef module:base-logger/appenders/file~AppenderOptions
+ * @property {string} path - which is the path to the file where the logs should be saved. The `path` should be without
+ * extension.
+ * @property {string} [roll] - if used, defines when new log files should be created and how it should be rolled. `roll`
+ * can be any momentjs date format. the file name of log files will be appended with the time formated in the specified
+ * format and whenever the parsed value changes, a new log file will be created.
+ *
+ * > For example,
+ * >
+ * > a value of `YYYYM` will create one file for each month.
+ * >
+ * > For Jan 2015, the filename will be `&lt;&lt;value of path>>-20151.log`.
+ *
+ */
+/**
  * @typedef module:base-logger~LogPattern
  * @property {string} debug - pattern to be used to format debug logs
  * @property {string} info - pattern to be used to format info logs
@@ -137,7 +152,12 @@
  * @external util
  * @see {@link http://nodejs.org/api/util.html}
  */
-</code></pre>
+/**
+ * fs-extra contains methods that aren't included in the vanilla Node.js fs package. Such as mkdir -p, cp -r,
+ * and rm -rf.
+ * @external fs-extra
+ * @see {@link https://www.npmjs.org/package/fs-extra}
+ */</code></pre>
         </article>
     </section>
 
@@ -150,7 +170,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="module-base-logger.html">base-logger</a></li><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="formatter.html">base-logger/formatter</a></li></ul><h3>Externals</h3><ul><li><a href="external-merge.html">merge</a></li><li><a href="external-moment.html">moment</a></li><li><a href="external-util.html">util</a></li></ul><h3>Classes</h3><ul><li><a href="module-base-logger-Logger.html">Logger</a></li><li><a href="module-base-logger-LoggerBase.html">LoggerBase</a></li></ul>
+    <h2><a href="index.html">base.logger</a></h2><h3>Modules</h3><ul><li><a href="module-base-logger.html">base-logger</a></li><li><a href="console.html">base-logger/appenders/console</a></li><li><a href="file.html">base-logger/appenders/file</a></li><li><a href="formatter.html">base-logger/formatter</a></li></ul><h3>Externals</h3><ul><li><a href="external-fs-extra.html">fs-extra</a></li><li><a href="external-merge.html">merge</a></li><li><a href="external-moment.html">moment</a></li><li><a href="external-util.html">util</a></li></ul><h3>Classes</h3><ul><li><a href="module-base-logger-Logger.html">Logger</a></li><li><a href="module-base-logger-LoggerBase.html">LoggerBase</a></li></ul>
 </nav>
 <script> prettyPrint(); </script>
 <script src="scripts/linenumber.js"> </script>
